@@ -1,0 +1,5 @@
+{
+  "name": "Digital Divide Atlas",
+  "description": "Interactive data visualization exploring the balance between energy access and digital connectivity, featuring dynamic teeter-totter physics and Veo video generation.",
+  "requestFramePermissions": []
+}

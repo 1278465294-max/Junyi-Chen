@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Divide Atlas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'navy-dark': '#050814',
+              'neon-cyan': '#00f3ff',
+              'neon-blue': '#0066ff',
+              'neon-magenta': '#ff00ff',
+              'glass': 'rgba(255, 255, 255, 0.05)'
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            boxShadow: {
+              'glow': '0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3)',
+              'glow-magenta': '0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.3)',
+            },
+            animation: {
+              'spin-slow': 'spin 8s linear infinite',
+              'scanline': 'scan 3s linear infinite',
+              'fade-in': 'fadeIn 0.5s ease-out'
+            },
+            keyframes: {
+              scan: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(1000%)' }
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #050814;
+        color: #e2e8f0;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050814;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00f3ff;
+      }
+
+      /* PRINT STYLES FOR PDF EXPORT */
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+        
+        /* Force background colors to print */
+        body {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          background-color: #050814 !important;
+        }
+
+        /* Reset height constraints so full content prints */
+        html, body, #root, main {
+          height: auto !important;
+          overflow: visible !important;
+          position: static !important;
+        }
+
+        /* Hide UI elements not needed for the report */
+        header, .no-print, button {
+          display: none !important;
+        }
+
+        /* Ensure texts are visible */
+        * {
+          text-shadow: none !important;
+        }
+        
+        /* Ensure charts don't get cut off between pages */
+        section {
+          break-inside: avoid;
+          page-break-inside: avoid;
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.1/",
+    "react": "https://esm.sh/react@^19.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
